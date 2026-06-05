@@ -4,6 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Owen Mulhern — Writing Portfolio</title>
+<link rel="icon" type="image/png" href="owenprofilepic.png">
 <link href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&family=DM+Mono:wght@300;400;500&display=swap" rel="stylesheet">
 <style>
   :root {
@@ -179,6 +180,64 @@
     color: var(--accent);
   }
 
+  /* References */
+  .references {
+    margin-top: 56px;
+    padding-top: 40px;
+    border-top: 1px solid var(--rule);
+    display: flex;
+    flex-direction: column;
+    gap: 32px;
+  }
+
+  .reference {
+    display: flex;
+    gap: 20px;
+    align-items: flex-start;
+  }
+
+  .ref-avatar {
+    width: 52px;
+    height: 52px;
+    border-radius: 50%;
+    object-fit: cover;
+    flex-shrink: 0;
+    border: 1px solid var(--rule);
+  }
+
+  .ref-body {}
+
+  .ref-name {
+    font-size: 14px;
+    font-weight: 700;
+    color: var(--ink);
+    margin-bottom: 2px;
+  }
+
+  .ref-name a {
+    color: var(--ink);
+    text-decoration: none;
+    border-bottom: 1px solid var(--rule);
+  }
+
+  .ref-name a:hover { color: var(--accent); }
+
+  .ref-role {
+    font-family: 'DM Mono', monospace;
+    font-size: 10px;
+    letter-spacing: 0.06em;
+    color: var(--muted);
+    margin-bottom: 10px;
+  }
+
+  .ref-quote {
+    font-size: 14px;
+    line-height: 1.75;
+    color: #4a4640;
+    font-style: italic;
+  }
+
+  /* Credentials */
   .credentials {
     margin-top: 56px;
     padding-top: 40px;
@@ -221,13 +280,15 @@
   .piece:nth-child(2) { animation: fadeUp 0.5s 0.18s ease both; }
   .piece:nth-child(3) { animation: fadeUp 0.5s 0.26s ease both; }
   .piece:nth-child(4) { animation: fadeUp 0.5s 0.34s ease both; }
-  .credentials { animation: fadeUp 0.5s 0.42s ease both; }
+  .references { animation: fadeUp 0.5s 0.42s ease both; }
+  .credentials { animation: fadeUp 0.5s 0.50s ease both; }
 
   @media (max-width: 600px) {
     .page { padding: 48px 24px 80px; }
     .credentials { grid-template-columns: 1fr; gap: 24px; }
     .piece { padding: 22px 20px; }
     .piece-top { flex-direction: column; gap: 4px; }
+    .reference { flex-direction: column; gap: 12px; }
   }
 </style>
 </head>
@@ -318,6 +379,29 @@
         <span class="tag">ROAS vs LTV</span>
         <span class="tag">Demand creation</span>
         <span class="tag">Platform strategy</span>
+      </div>
+    </div>
+
+  </div>
+
+  <div class="references">
+    <div class="section-label" style="margin-bottom:0">References</div>
+
+    <div class="reference">
+      <img class="ref-avatar" src="beatusprofilepic.jpeg" alt="Beatus Hoang">
+      <div class="ref-body">
+        <div class="ref-name"><a href="https://www.linkedin.com/in/beatus-hoang/" target="_blank">Beatus Hoang</a></div>
+        <div class="ref-role">Sr. Growth Manager, Semrush · managed Owen directly · Feb 2026</div>
+        <p class="ref-quote">"Owen is one of those growth marketers who's just as comfortable in a strategy conversation as he is deep in a spreadsheet debugging GA4 tracking issues. He reported to me while running Semrush's acquired email assets, The Growth Bulletin and The Early Checkout. He didn't just keep the lights on. He completely overhauled our email program. Owen handled complex platform migrations from ActiveCampaign to Beehiiv, executed full rebrands, and fixed deliverability problems that were killing our reach. At one point he made the call to cut 50K unengaged contacts from our list to save our sender reputation. That's the kind of decision that takes guts and business sense. Whether he was tracking down data discrepancies or running content experiments that doubled our click volume, he owned it completely. He never made excuses and was fully transparent when things didn't work. He's calm under pressure, manages contractors and budgets well, and treats whatever channel he's running like it's his own business. I highly recommend Owen for any growth role."</p>
+      </div>
+    </div>
+
+    <div class="reference">
+      <img class="ref-avatar" src="sandrineprofilepic.jpeg" alt="Sandrine Dervin">
+      <div class="ref-body">
+        <div class="ref-name"><a href="https://www.linkedin.com/in/sandrine-dervin/" target="_blank">Sandrine Dervin</a></div>
+        <div class="ref-role">Head of Marketing, Zest · client · ongoing</div>
+        <p class="ref-quote">"J'ai eu le plaisir de collaborer avec Owen et je le recommande sans hesitation. Owen dispose d'une excellente capacite d'analyse et saisit rapidement les enjeux d'un projet. Il sait transformer ses analyses en plans d'action concrets et efficaces, parfaitement adaptes aux objectifs. Au-dela de ses competences techniques, Owen apporte une vraie valeur par sa collaboration naturelle. C'est un professionnel sur qui on peut compter. Owen reunit toutes les qualites d'un excellent growth marketer : rigueur analytique, pragmatisme et intelligence relationnelle. Je le recommande les yeux fermes."</p>
       </div>
     </div>
 
