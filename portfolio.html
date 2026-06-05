@@ -1,0 +1,342 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Owen Mulhern — Writing Portfolio</title>
+<link href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&family=DM+Mono:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --ink: #0e0e0e;
+    --paper: #f4f1eb;
+    --rule: #c8c0b0;
+    --accent: #1a3a2a;
+    --accent-light: #e8f0eb;
+    --muted: #7a7268;
+    --tag-bg: #e4e0d8;
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    background: var(--paper);
+    color: var(--ink);
+    font-family: 'Libre Baskerville', Georgia, serif;
+    line-height: 1.6;
+    min-height: 100vh;
+  }
+
+  body::before {
+    content: '';
+    position: fixed;
+    inset: 0;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.04'/%3E%3C/svg%3E");
+    pointer-events: none;
+    z-index: 100;
+    opacity: 0.4;
+  }
+
+  .page {
+    max-width: 780px;
+    margin: 0 auto;
+    padding: 80px 40px 120px;
+  }
+
+  header {
+    border-bottom: 1px solid var(--rule);
+    padding-bottom: 40px;
+    margin-bottom: 56px;
+  }
+
+  .masthead {
+    font-family: 'DM Mono', monospace;
+    font-size: 11px;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--muted);
+    margin-bottom: 20px;
+  }
+
+  h1 {
+    font-size: clamp(24px, 3.5vw, 32px);
+    font-weight: 700;
+    line-height: 1.25;
+    letter-spacing: -0.01em;
+    margin-bottom: 16px;
+  }
+
+  .intro {
+    font-size: 15px;
+    line-height: 1.75;
+    color: #3a3630;
+    max-width: 600px;
+  }
+
+  .section-label {
+    font-family: 'DM Mono', monospace;
+    font-size: 10px;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--muted);
+    margin-bottom: 32px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+  }
+
+  .section-label::after {
+    content: '';
+    flex: 1;
+    height: 1px;
+    background: var(--rule);
+  }
+
+  .pieces {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+  }
+
+  .piece {
+    border: 1px solid var(--rule);
+    padding: 28px 32px;
+    background: rgba(255,255,255,0.45);
+    transition: background 0.2s, border-color 0.2s;
+  }
+
+  .piece:first-child { border-radius: 4px 4px 0 0; }
+  .piece:last-child { border-radius: 0 0 4px 4px; }
+
+  .piece:hover {
+    background: rgba(255,255,255,0.75);
+    border-color: #a8a098;
+  }
+
+  .piece-top {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: 16px;
+    margin-bottom: 10px;
+  }
+
+  .piece-num {
+    font-family: 'DM Mono', monospace;
+    font-size: 11px;
+    color: var(--muted);
+    margin-top: 4px;
+    flex-shrink: 0;
+  }
+
+  .piece-title {
+    font-size: 18px;
+    font-weight: 700;
+    line-height: 1.3;
+    letter-spacing: -0.01em;
+    flex: 1;
+  }
+
+  .piece-title a {
+    color: var(--ink);
+    text-decoration: none;
+  }
+
+  .piece-title a:hover { color: var(--accent); }
+
+  .piece-sub {
+    font-size: 13px;
+    font-style: italic;
+    color: var(--muted);
+    margin-bottom: 12px;
+  }
+
+  .piece-desc {
+    font-size: 14px;
+    line-height: 1.7;
+    color: #4a4640;
+    margin-bottom: 14px;
+  }
+
+  .tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+  }
+
+  .tag {
+    font-family: 'DM Mono', monospace;
+    font-size: 10px;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    background: var(--tag-bg);
+    color: var(--muted);
+    padding: 3px 8px;
+    border-radius: 2px;
+  }
+
+  .tag.featured {
+    background: var(--accent-light);
+    color: var(--accent);
+  }
+
+  .credentials {
+    margin-top: 56px;
+    padding-top: 40px;
+    border-top: 1px solid var(--rule);
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 32px;
+  }
+
+  .cred-block h3 {
+    font-family: 'DM Mono', monospace;
+    font-size: 10px;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--muted);
+    margin-bottom: 12px;
+  }
+
+  .cred-block p, .cred-block a {
+    font-size: 14px;
+    line-height: 1.7;
+    color: #4a4640;
+  }
+
+  .cred-block a {
+    color: var(--accent);
+    text-decoration: none;
+    border-bottom: 1px solid currentColor;
+  }
+
+  .cred-block a:hover { opacity: 0.7; }
+
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(16px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  header { animation: fadeUp 0.5s ease both; }
+  .piece:nth-child(1) { animation: fadeUp 0.5s 0.1s ease both; }
+  .piece:nth-child(2) { animation: fadeUp 0.5s 0.18s ease both; }
+  .piece:nth-child(3) { animation: fadeUp 0.5s 0.26s ease both; }
+  .piece:nth-child(4) { animation: fadeUp 0.5s 0.34s ease both; }
+  .credentials { animation: fadeUp 0.5s 0.42s ease both; }
+
+  @media (max-width: 600px) {
+    .page { padding: 48px 24px 80px; }
+    .credentials { grid-template-columns: 1fr; gap: 24px; }
+    .piece { padding: 22px 20px; }
+    .piece-top { flex-direction: column; gap: 4px; }
+  }
+</style>
+</head>
+<body>
+<div class="page">
+
+  <header>
+    <div class="masthead">Owen Mulhern · Writing samples</div>
+    <h1>Ecommerce and DTC content on attribution, measurement, and ad performance</h1>
+    <p class="intro">The pieces below were written for The DTC Times (Chew on This / Obvi) between 2022 and 2024. They cover the analytical and operational side of DTC marketing: attribution models, tracking infrastructure, incrementality testing, and platform strategy. Two pieces reference Triple Whale directly.</p>
+  </header>
+
+  <div class="section-label">Selected pieces</div>
+
+  <div class="pieces">
+
+    <div class="piece">
+      <div class="piece-top">
+        <div class="piece-num">01</div>
+        <div class="piece-title">
+          <a href="https://the.dtctimes.com/p/the-importance-of-measurement-attribution-and-incrementality" target="_blank">
+            The Importance of Measurement, Attribution, and Incrementality
+          </a>
+        </div>
+      </div>
+      <div class="piece-sub">The DTC Times · Nov 2024 · Deep dive</div>
+      <p class="piece-desc">A standalone explainer covering the full measurement stack: attribution windows, last-click versus multi-touch models, first-party pixels, server-side tracking, CAPI, and incrementality testing methods including A/B, holdout, and geo-based approaches. Includes a sponsored section on Triple Whale Sonar and its role in closing tracking gaps at scale.</p>
+      <div class="tags">
+        <span class="tag featured">Triple Whale Sonar featured</span>
+        <span class="tag">Attribution</span>
+        <span class="tag">Server-side tracking</span>
+        <span class="tag">Incrementality</span>
+        <span class="tag">First-party data</span>
+      </div>
+    </div>
+
+    <div class="piece">
+      <div class="piece-top">
+        <div class="piece-num">02</div>
+        <div class="piece-title">
+          <a href="https://the.dtctimes.com/p/issue-19-finding-profit-chaos" target="_blank">
+            Issue 19: Finding Profit in Chaos
+          </a>
+        </div>
+      </div>
+      <div class="piece-sub">The DTC Times · June 2024 · Analysis</div>
+      <p class="piece-desc">Covers Meta's Performance Summit and the industry shift toward incrementality-based advertising, including their third-party analytics integration with explicit coverage of Triple Whale and Taylor Holiday's response. Includes a breakdown of what incrementality means for brands at different spend levels and a summary of Sean Frank's research across more than 100 founders.</p>
+      <div class="tags">
+        <span class="tag featured">Triple Whale named</span>
+        <span class="tag">Meta ads</span>
+        <span class="tag">Incrementality</span>
+        <span class="tag">DTC market analysis</span>
+      </div>
+    </div>
+
+    <div class="piece">
+      <div class="piece-top">
+        <div class="piece-num">03</div>
+        <div class="piece-title">
+          <a href="https://the.dtctimes.com/p/issue-21-dtc-marketing-is-the-new-sweet-science" target="_blank">
+            Issue 21: DTC Marketing is the New Sweet Science
+          </a>
+        </div>
+      </div>
+      <div class="piece-sub">The DTC Times · July 2024 · Analysis</div>
+      <p class="piece-desc">Data-driven breakdown of omnichannel halo effects using Haus.io research: 97% of ads drive positive lift on Amazon, with social and video outperforming search halo effects by 700%. Also covers ad iteration methodology using real spend data across 17 accounts and $12.4M in spend, and what separates 8-figure brand operations from the rest.</p>
+      <div class="tags">
+        <span class="tag">Halo effects</span>
+        <span class="tag">Omnichannel measurement</span>
+        <span class="tag">Creative testing</span>
+        <span class="tag">Data analysis</span>
+      </div>
+    </div>
+
+    <div class="piece">
+      <div class="piece-top">
+        <div class="piece-num">04</div>
+        <div class="piece-title">
+          <a href="https://the.dtctimes.com/p/issue-27-how-to-up-your-ad-creative-game" target="_blank">
+            Issue 27: How to Up Your Ad Creative Game
+          </a>
+        </div>
+      </div>
+      <div class="piece-sub">The DTC Times · Aug 2024 · Strategy</div>
+      <p class="piece-desc">A two-part breakdown covering a creative development framework across emotion, angle, concept, and medium, and an analysis of why ROAS-optimised brands eventually saturate demand. Makes the case, using Preston Rutherford's research, for measuring 180-day full-price LTV as a more reliable performance signal.</p>
+      <div class="tags">
+        <span class="tag">Ad creative</span>
+        <span class="tag">ROAS vs LTV</span>
+        <span class="tag">Demand creation</span>
+        <span class="tag">Platform strategy</span>
+      </div>
+    </div>
+
+  </div>
+
+  <div class="credentials">
+    <div class="cred-block">
+      <h3>Background</h3>
+      <p>MSc Molecular Medicine, Imperial College London. Former data journalism team lead at Earth.Org, where organic traffic grew 68x in 18 months. Work cited by peer-reviewed journals, US law reviews, and government agencies. Repeatedly rehired by Semrush and Zest.</p>
+    </div>
+    <div class="cred-block">
+      <h3>Contact</h3>
+      <p>
+        <a href="mailto:owenhmulhern@gmail.com">owenhmulhern@gmail.com</a><br><br>
+        Additional work available on request: Earth.Org data journalism, B2B SaaS content, and Semrush SMB publications.
+      </p>
+    </div>
+  </div>
+
+</div>
+</body>
+</html>
